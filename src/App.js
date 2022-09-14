@@ -5,19 +5,19 @@ import ReactCodeInput from 'react-code-input';
 import toast, { Toaster } from 'react-hot-toast';
 
 // Inline styles for input
-const colorPrimary = 'rgb(168, 21, 168)';
+const colorPrimary = 'rgba(89, 97, 223, .3)';
 const colorPrimaryText = 'rgb(255, 255, 255)';
 const colorError = 'rgba(255, 0, 85, .3)';
 const colorErrorText = 'rgb(255, 0, 85)';
 const props = {
 	inputStyle: {
 		color: `${colorPrimaryText}`,
-		border: `2px solid ${colorPrimary}`,
-		backgroundColor: `${colorPrimary}`
+		borderColor: `${colorPrimary}`,
+		background: `${colorPrimary}`,
 	},
 	inputStyleInvalid: {
 		color: `${colorErrorText}`,
-		border: `2px solid ${colorError}`,
+		borderColor: `${colorError}`,
 		backgroundColor: `${colorError}`
 	}
 }
@@ -62,13 +62,15 @@ const PinCode = () => {
 					id="pinCode"
 					fields={6}
 					type="text"
-					className="App-header"
+					className="ReactCodeInput"
 					isValid={inputStyle}
 					onChange={handlePinChange}
 					value={pinCode}
+					autoFocus={false}
 					forceUppercase
 					{...props}
-				/>}
+				/>
+			}
 			{isPinCodeValid && pinCode.length === 6 &&
 				<Gift />}
 			<Toaster />
