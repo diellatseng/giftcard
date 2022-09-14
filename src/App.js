@@ -4,14 +4,17 @@ import { useState, useEffect } from 'react';
 import ReactCodeInput from 'react-code-input';
 import toast, { Toaster } from 'react-hot-toast';
 
+const colorPrimary = 'rgb(168, 21, 168)';
+const colorPrimaryText = 'rgb(255, 255, 255)';
+
 const props = {
 	inputStyle: {
-		color: 'lightskyblue',
-		border: '1px solid lightskyblue'
+		color: `${colorPrimaryText}`,
+		border: `2px solid ${colorPrimary}`
 	},
 	inputStyleInvalid: {
 		color: 'red',
-		border: '1px solid red'
+		border: '2px solid red'
 	}
 }
 const CORRECT_PIN_CODE = "ETOILE";
