@@ -21,11 +21,12 @@ const props = {
 		backgroundColor: `${colorError}`
 	}
 }
-const CORRECT_PIN_CODE = "ETOILE";
 const PinCode = () => {
 	const [isPinCodeValid, setIsPinCodeValid] = useState(undefined);
 	const [pinCode, setPinCode] = useState("");
 	const [inputStyle, setInputStyle] = useState(true); // Reset style after first pin error
+	// PIN
+	const CORRECT_PIN_CODE = "ETOILE";
 	// Update pinCode state on input change
 	const handlePinChange = pinCode => {
 		setPinCode(pinCode);
@@ -36,22 +37,23 @@ const PinCode = () => {
 		if (pinCode.length === 6) {
 			const isPinCodeValid = pinCode === CORRECT_PIN_CODE; // check pin code
 			setIsPinCodeValid(isPinCodeValid); // set valid state
-			setInputStyle(isPinCodeValid);
+			setInputStyle(isPinCodeValid); // set input style (valid/invalid)
+			// Error message
+			if (isPinCodeValid === false) {
+				const messages = [
+					"Are you serious?",
+					"This won't work.",
+					"Please try again.",
+					"Wrong.",
+					"This is not the right pin.",
+					"Something's wrong.",
+					"Sorry, your account is locked.\n\n...Joking.",
+				]
+				const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+				toast.error(randomMessage)
+			}
 		}
 	}, [pinCode]);
-	// Error message for invalid pin
-	useEffect(() => {
-		const messages = [
-			"Are you serious?",
-			"This won't work.",
-			"Want to try again?",
-			"Wrong."
-		]
-		const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-		if (isPinCodeValid === false && pinCode.length === 6) {  // !!!! passing through this func before isPinCodeValid is assigned with new value
-			toast.error(randomMessage)
-		}
-	}, [isPinCodeValid, pinCode]);
 
 	return (
 		<div className='App'>
@@ -60,7 +62,7 @@ const PinCode = () => {
 					id="pinCode"
 					fields={6}
 					type="text"
-					className='App-header'
+					className="App-header"
 					isValid={inputStyle}
 					onChange={handlePinChange}
 					value={pinCode}
