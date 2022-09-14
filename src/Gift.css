@@ -1,5 +1,10 @@
-.voucher {
+.container {
 	display: flex;
-	width: 80vw;
-	margin: auto;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.voucher {
+	height: 70vh;
 }
