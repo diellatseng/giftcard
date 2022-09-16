@@ -47,7 +47,7 @@ const PinCode = () => {
 					"Wrong.",
 					"This is not the right pin.",
 					"Something's wrong.",
-					"Sorry, your account is locked.\n\n...Joking.",
+					"Sorry, your account is locked.\n...Joking.",
 				]
 				const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 				toast.error(randomMessage)
@@ -56,7 +56,8 @@ const PinCode = () => {
 	}, [pinCode]);
 
 	return (
-		<div className='App'>
+		<div className='App' >
+
 			{isPinCodeValid !== true &&
 				<ReactCodeInput
 					id="pinCode"
@@ -71,10 +72,11 @@ const PinCode = () => {
 					{...props}
 				/>
 			}
+
 			{isPinCodeValid && pinCode.length === 6 &&
 				<Gift />}
 			<Toaster />
-		</div>
+		</div >
 	);
 };
 
