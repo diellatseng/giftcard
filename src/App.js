@@ -6,6 +6,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 // Inline styles for input
 const colorPrimary = 'rgba(89, 97, 223, .3)';
+// const colorPrimary = 'rgba(0,0,0, .05)';
 const colorPrimaryText = 'rgb(255, 255, 255)';
 const colorError = 'rgba(255, 0, 85, .3)';
 const colorErrorText = 'rgb(255, 0, 85)';
@@ -56,7 +57,8 @@ const PinCode = () => {
 	}, [pinCode]);
 
 	return (
-		<div className='App'>
+		<div className='App' >
+
 			{isPinCodeValid !== true &&
 				<ReactCodeInput
 					id="pinCode"
@@ -71,8 +73,9 @@ const PinCode = () => {
 					{...props}
 				/>
 			}
+
 			{isPinCodeValid && pinCode.length === 6 &&
-				<Gift />}
+				<Gift isPinCodeValid={isPinCodeValid} />}
 			<Toaster />
 		</div>
 	);
