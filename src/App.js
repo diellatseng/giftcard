@@ -59,18 +59,28 @@ const PinCode = () => {
 		<div className='App' >
 
 			{isPinCodeValid !== true &&
-				<ReactCodeInput
-					id="pinCode"
-					fields={6}
-					type="text"
-					className="ReactCodeInput"
-					isValid={inputStyle}
-					onChange={handlePinChange}
-					value={pinCode}
-					autoFocus={false}
-					forceUppercase
-					{...props}
-				/>
+				<>
+					<ReactCodeInput
+						id="pinCode"
+						fields={6}
+						type="text"
+						className="ReactCodeInput"
+						isValid={inputStyle}
+						onChange={handlePinChange}
+						value={pinCode}
+						autoFocus={false}
+						forceUppercase
+						{...props}
+					/>
+					<div className="ReactCodeInput_mobile">
+						<p className="ReactCodeInput_mobile-text">No time for mobile version.<br /><br />...Sorry.</p>
+						<button className="ReactCodeInput_mobile-btn" onClick={() => {
+							toast('Good try!', {
+								icon: '👏'
+							});
+						}}>Switch device</button>
+					</div>
+				</>
 			}
 
 			{isPinCodeValid && pinCode.length === 6 &&
