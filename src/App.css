@@ -2,6 +2,10 @@
 	--main-background: linear-gradient(64.5deg, #f575b9 14.7%, #5961df 88.7%);
 }
 
+body {
+	overflow: hidden;
+}
+
 .App {
 	display: flex;
 	min-height: 100vh;
